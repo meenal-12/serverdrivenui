@@ -1,0 +1,33 @@
+{
+  "button": [
+  {
+    "type": "button",
+    "text": "Increment Counter",
+    "style": {
+      "backgroundColor": "#3498DB",
+      "textColor": "#FFFFFF",
+      "fontSize": 16
+  }
+  }
+],
+  "cards": [
+    {
+      "title": "Card 1",
+      "description": "Description for Card 1",
+      "style": {
+        "backgroundColor": "#FF5733",
+        "textColor": "#FFFFFF",
+        "fontSize": 20
+      }
+    },
+    {
+      "title": "Card 2",
+      "description": "Description for Card 2",
+      "style": {
+        "backgroundColor": "#89CFF0",
+        "textColor": "#FFFFFF",
+        "fontSize": 18
+      }
+    }
+  ]
+}
