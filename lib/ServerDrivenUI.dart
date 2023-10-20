@@ -1,7 +1,3 @@
-// import 'dart:js_util';
-
-import 'dart:js_util';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -20,6 +16,7 @@ class ServerDrivenUI extends StatefulWidget {
 
 class _ServerDrivenUIState extends State<ServerDrivenUI> {
   List<CardData> cardData = [];
+  ButtonData btnData = ButtonData.empty(); // Initialize with an empty instance
 
   final CounterController counterController = Get.put(CounterController());
 
@@ -37,35 +34,39 @@ class _ServerDrivenUIState extends State<ServerDrivenUI> {
     cardData = cardList.map((data) => CardData.fromJson(data)).toList();
 
     final List<dynamic> buttonData = jsonData['button'];
-    btnData = buttonData[0];
-    print(buttonData[0]);
+    if (buttonData.isNotEmpty) {
+      btnData = ButtonData.fromJson(buttonData[0]); // Populate btnData
+      print(btnData.text);
+    }
 
-    print(ButtonData);
     setState(() {});
   }
 
-  // void incrementCounter() {
-  //   setState(() {
-  //     counter++;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
+    print(btnData.style.backgroundColor);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Server Driven UI'),
       ),
       body: Column(
         children: [
-          //to make this server driven
-          // ElevatedButton(
-          //   onPressed: incrementCounter,
-          //   child: const Text('Increment Counter'),
-          // ),
           ElevatedButton(
             onPressed: () => counterController.increment(),
-            child: Text(btnData.text),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(int.parse(
+                  btnData.style.backgroundColor.replaceAll("#", "0xFF"))),
+              // Background color
+              // Text color
+              elevation: 5, // Shadow
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0), // Border radius
+              ),
+            ),
+            child: Text(
+              btnData.text,
+              style: TextStyle(fontSize: btnData.style.fontSize),
+            ),
           ),
           Obx(() => Text('Count: ${counterController.count}')),
           Expanded(

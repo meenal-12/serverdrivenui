@@ -3,7 +3,9 @@ class ButtonData {
   final buttonStyle style;
 
   ButtonData({required this.text, required this.style});
-
+  ButtonData.empty()
+      : text = '',
+        style = buttonStyle.empty();
   factory ButtonData.fromJson(Map<String, dynamic> json) {
     return ButtonData(
         text: json['text'], style: buttonStyle.fromJson(json['style']));
@@ -20,6 +22,10 @@ class buttonStyle {
     required this.textColor,
     required this.fontSize,
   });
+  buttonStyle.empty()
+      : backgroundColor = '',
+        textColor = '',
+        fontSize = 0.0;
 
   factory buttonStyle.fromJson(Map<String, dynamic> json) {
     return buttonStyle(

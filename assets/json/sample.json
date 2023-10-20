@@ -1,12 +1,14 @@
+
+
 {
   "button": [
   {
     "type": "button",
-    "text": "Increment Counter",
+    "text": "Counter-variable",
     "style": {
-      "backgroundColor": "#3498DB",
-      "textColor": "#FFFFFF",
-      "fontSize": 16
+      "backgroundColor": "#89CFF0",
+      "textColor": "#9400D3",
+      "fontSize": 30
   }
   }
 ],
@@ -15,7 +17,7 @@
       "title": "Card 1",
       "description": "Description for Card 1",
       "style": {
-        "backgroundColor": "#FF5733",
+        "backgroundColor": "#FFA500",
         "textColor": "#FFFFFF",
         "fontSize": 20
       }
@@ -26,7 +28,7 @@
       "style": {
         "backgroundColor": "#89CFF0",
         "textColor": "#FFFFFF",
-        "fontSize": 18
+        "fontSize": 20
       }
     }
   ]

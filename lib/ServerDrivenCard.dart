@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:cardserverdriven/Cards.dart';
 import 'package:cardserverdriven/CounterProvider.dart';
 import 'package:get/get.dart';
+import 'package:cardserverdriven/sharedcontroller.dart';
 
 class ServerDrivenCard extends StatelessWidget {
   final CardData data;
   final CounterController counterController = Get.put(CounterController());
-
-  ServerDrivenCard({required this.data});
+  final SharedController sharedController = Get.put(SharedController());
+  ServerDrivenCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +38,14 @@ class ServerDrivenCard extends StatelessWidget {
               ),
             ),
           ),
-          Obx(() => Text(
-              'Count: ${counterController.count}')), // Display the counter value on each card
+          ElevatedButton(
+            onPressed: () {
+              // Trigger an action and change the shared value
+              sharedController.someValue.value = "New Value";
+            },
+            child: Obx(() => Text(sharedController.someValue.value)),
+          ),
+          Obx(() => Text('Count: ${counterController.count}')),
         ],
       ),
     );
